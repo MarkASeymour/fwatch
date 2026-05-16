@@ -1,8 +1,9 @@
 mod structs;
 mod fwatch;
 
+use std::process;
+
 fn main() {
     let arguments: structs::Args = argh::from_env();
-    fwatch::watch_for_file(arguments)
-
+    process::exit(fwatch::watch_for_file(&arguments));
 }

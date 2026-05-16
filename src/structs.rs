@@ -1,4 +1,3 @@
-
 use argh::FromArgs;
 
 #[derive(FromArgs)]
@@ -16,7 +15,10 @@ pub struct Args {
     /// the time to end at in 24HR in follow format "15:00:00" for 3 pm in host timezone
     #[argh(positional)]
     pub endtime: String,
-    /// String time zone. If not set then UTC is used. IANA format. for example-> America/New_York
-    #[argh(option, short = 'z', default = "Etc/UTC")]
-    pub timezone: String
+    /// string time zone. if not set then UTC is used. IANA format. for example-> America/New_York
+    #[argh(option, short = 'z', default = "String::from(\"Etc/UTC\")")]
+    pub timezone: String,
+    /// poll interval in seconds (default: 5)
+    #[argh(option, short = 'i', default = "5")]
+    pub interval: u64,
 }
